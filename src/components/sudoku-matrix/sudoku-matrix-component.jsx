@@ -1,36 +1,20 @@
 import React, { useState } from 'react';
-import checker from '../../checker';
+import isValid from '../../checker';
+// import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './sudoku-matrix-style.css';
 
 function SudokuMatrix(theme) {
+    // states
     const [mat, setMat] = useState(Array.from({ length: 9 }, v => Array.from({ length: 9 }, v => 0)));
-
-    const handleChange = (i, j, e) => { 
-        console.log(e);
-        console.log(e.target.value);
-        console.log(i, j);
-
-        console.log(mat);
-        let copy = [...mat];
-        console.log("copy : ", copy);
-        copy[i][j] = +e.target.value;
-        console.log("copy : ", copy);
-        setMat(copy);
-        console.log(mat);
-    
-        DisplayMatrix();
-        checker(mat);
-    };
+    const [validOrNot, setValid] = useState("Valid Sudoku");
 
     const DisplayMatrix = () =>  {
-        console.log("lollol");
-        console.log("theme", theme);    
         var rows = mat.map(function (item, i){
             var entry = item.map(function (element, j) {
                 return (
                     <td 
                         key={j} 
-                        id={(element!==0)? 'user-filled' : ''} 
+                        id={(element!==0)? 'filled' : ''} 
                         className={ 
                             ((j===3||j===6) && (i===3||i===6))?     
                                 'block-column block-row': 
@@ -40,9 +24,10 @@ function SudokuMatrix(theme) {
                                         'block-row':''
                     }>
                             <input
+                                id='user-input'
                                 type="number"
                                 placeholder={element}
-                                onChange={ (e) => {handleChange(i, j, e)} }
+                                onChange={ (e) => {handleMatrixChange(i, j, e)} }
                             /> 
                     </td>
                 );
@@ -52,19 +37,56 @@ function SudokuMatrix(theme) {
             );
         });
         return (
-            <table className="table">
+            <table className="sudoku-table">
                 <tbody>
                     {rows}
                 </tbody>
             </table>
         );
     }
+    
+    const handleMatrixChange = (i, j, e) => { 
+        let copy = [...mat];
+        copy[i][j] = +e.target.value;
+        setMat(copy);
+    
+        DisplayMatrix();
+
+        if (!isValid(mat)){  // if sudoku is not valid
+            // to disble the 'solve' button
+            console.log('solve disabled');
+            document.getElementById('solve').disabled = true;
+            document.getElementById('solve').dispatchEvent = 'click';
+            document.getElementById('solve').classList.add('dont-solve');
+
+            // to change the note
+            setValid("Invalid Sudoku");
+            document.getElementById('valid-not-valid').classList.add('invalid-sudoku');
+
+            setMat(mat);
+        }
+        else{  // if sudoku is valid
+            // to enable the 'solve' button
+            console.log('solve enabled');
+            document.getElementById('solve').disabled = false;
+            document.getElementById('solve').classList.remove('dont-solve');
+
+            // for the note
+            setValid("Valid Sudoku");
+            document.getElementById('valid-not-valid').classList.remove('invalid-sudoku');
+            document.getElementById('valid-not-valid').classList.add('valid-sudoku');
+        }
+    };
 
     return (
         <div>
             {DisplayMatrix()}
+            <div id='valid-not-valid'>
+                <em id='valid-or-not' className={isValid(mat)? 'valid-sudoku':'invalid-sudoku'}>{validOrNot}</em>
+            </div>
+            
         </div>
     )
-}
+}   
 
 export default SudokuMatrix;

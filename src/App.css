@@ -1,8 +1,10 @@
 .App {
   text-align: center;
-  padding: 2.8em;
 }
 
+h1 {
+  padding-top: 0.9rem;
+}
 
 .matrix {
   padding: 2.75em;

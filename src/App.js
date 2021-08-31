@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <h1>Sudoku Solver</h1>
-      <DarkMode className='dark-mode'/>
+      {/* <DarkMode className='dark-mode'/> */}
       <div className="matrix">
         <SudokuMatrix/>
       </div>
