@@ -2,15 +2,20 @@
   text-align: center;
 }
 
-h1 {
+a {
+  display: inline-block;
   padding-top: 0.9rem;
+  text-decoration: none;
+  color: black;
 }
 
 .matrix {
+  display: inline;
   padding: 1.3em;
 }
 
 p {
-  padding-top: 0em;
+  display: inline-block;
+  padding-top: 1em;
   text-shadow: 0.5px 0.5px 0.5px red;
 }

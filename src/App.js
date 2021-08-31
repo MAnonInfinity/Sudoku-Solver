@@ -5,7 +5,7 @@ import SudokuMatrix from './components/sudoku-matrix/sudoku-matrix-component';
 function App() {
   return (
     <div className="App">
-      <h1>Sudoku Solver</h1>
+      <a href='https://github.com/MAnonInfinity/Sudoku-Solver' target='blank'><h1>Sudoku Solver</h1></a>
       {/* <DarkMode className='dark-mode'/> */}
       <div className="matrix">
         <SudokuMatrix/>

@@ -49,6 +49,7 @@ input[type=number] {
 }
 
 #valid-not-valid {
+    display: inline-block;
     padding-top: 1rem;
     padding-bottom: 2rem;
 }
@@ -106,3 +107,17 @@ input[type=number] {
     background-color: #3e8e41;
 }
 
+.reset {
+    display: inline-block;
+    background-color: #0198E1;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 3.5px;
+    font-size: 1.3rem;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 8px 18px;
+    text-decoration: none;
+}
+.reset:hover {
+    background-color: #4682B4;
+}

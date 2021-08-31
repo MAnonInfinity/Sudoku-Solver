@@ -83,6 +83,23 @@ function SudokuMatrix(theme) {
         DisplayMatrix();
     }
 
+    const resetSudoku = () => {
+        const copy = Array.from({ length: 9 }, v => Array.from({ length: 9 }, v => 0));
+        setMat(copy);
+        setValid("Valid Sudoku");
+
+        // clearing all the input fields
+        document.querySelectorAll('#user-input').forEach(element => {
+            element.value = '';
+        });
+
+        // enabling the disabled 'solve' button
+        document.getElementById('solve').classList.remove('dont-solve');
+        document.getElementById('solve').disabled = false;
+
+        DisplayMatrix();
+    }
+
     return (
         <div>
             {DisplayMatrix()}
@@ -91,6 +108,7 @@ function SudokuMatrix(theme) {
             </div>
             <div className='solve-reset'>
                 <button id='solve' onClick={ solve }>Solve</button>
+                <button className='reset' onClick={ resetSudoku }>Reset</button>
             </div>
         </div>
     )
