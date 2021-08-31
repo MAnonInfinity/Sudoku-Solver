@@ -1,6 +1,6 @@
 import './App.css';
 import SudokuMatrix from './components/sudoku-matrix/sudoku-matrix-component';
-import DarkMode from './components/dark-mode/dark-mode-component'
+// import DarkMode from './components/dark-mode/dark-mode-component'
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
       <div className="matrix">
         <SudokuMatrix/>
       </div>
+      <p>Made with ❤️ by MAnon</p>
     </div>
   );
 }

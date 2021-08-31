@@ -7,5 +7,10 @@ h1 {
 }
 
 .matrix {
-  padding: 2.75em;
+  padding: 1.3em;
+}
+
+p {
+  padding-top: 0em;
+  text-shadow: 0.5px 0.5px 0.5px red;
 }
