@@ -121,3 +121,25 @@ input[type=number] {
 .reset:hover {
     background-color: #4682B4;
 }
+
+@media only screen and (max-width: 1024px){
+    .sudoku-table {
+        width: 30px;
+    }
+    input {
+        width: 30px;
+        height: 30px;   
+        font-size: 1.25rem;
+    }
+}
+
+@media only screen and (max-width: 472px){
+    .sudoku-table {
+        width: 12px;
+    }
+    input {
+        width: 12px;
+        height: 12px;   
+        font-size: 0.9rem;
+    }
+}

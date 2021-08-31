@@ -102,7 +102,7 @@ function SudokuMatrix(theme) {
 
     return (
         <div>
-            {DisplayMatrix()}
+            <div className='sudoku'>{DisplayMatrix()}</div>
             <div id='valid-not-valid'>
                 <em id='valid-or-not' className={isValid(mat)? 'valid-sudoku':'invalid-sudoku'}>{validOrNot}</em>
             </div>
